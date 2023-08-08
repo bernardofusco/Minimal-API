@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SuprimentosApi.Context;
 using SuprimentosApi.Models;
@@ -12,10 +11,7 @@ public class CategoriasController : ControllerBase
 {
     private readonly AppDbContext _context;
 
-    public CategoriasController(AppDbContext context)
-    {
-        _context = context;
-    }
+    public CategoriasController(AppDbContext context) => _context = context;
 
     [HttpGet("Materiais")]
     public ActionResult<IEnumerable<Categoria>> GetCategoriaMateriais()
@@ -32,7 +28,6 @@ public class CategoriasController : ControllerBase
         {
             return StatusCode(500, "Problema ao executar solicitação. Favor procurar a Equipe de Desenvolvimento.");
         }
-
     }
 
     [HttpGet]
@@ -86,7 +81,6 @@ public class CategoriasController : ControllerBase
         {
             return StatusCode(500, "Problema ao executar solicitação. Favor procurar a Equipe de Desenvolvimento.");
         }
-
     }
 
     [HttpPut("{cod_categoria:int}")]
@@ -110,7 +104,6 @@ public class CategoriasController : ControllerBase
     [HttpDelete("{cod_categoria:int}")]
     public ActionResult Delete(int cod_categoria)
     {
-
         try
         {
             var categoria = _context.Categorias.FirstOrDefault(c => c.COD_TIP_MAT == cod_categoria);
@@ -127,5 +120,4 @@ public class CategoriasController : ControllerBase
             return StatusCode(500, "Problema ao executar solicitação. Favor procurar a Equipe de Desenvolvimento.");
         }
     }
-
 }
