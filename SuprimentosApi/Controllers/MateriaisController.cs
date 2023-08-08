@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SuprimentosApi.Context;
 using SuprimentosApi.Models;
@@ -12,10 +11,7 @@ public class MateriaisController : ControllerBase
 {
     private readonly AppDbContext _context;
 
-    public MateriaisController(AppDbContext context)
-    {
-        _context = context;
-    }
+    public MateriaisController(AppDbContext context) => _context = context;
 
     [HttpGet]
     public ActionResult<IEnumerable<Material>> Get()
@@ -32,14 +28,12 @@ public class MateriaisController : ControllerBase
         catch (Exception)
         {
             return StatusCode(500, "Problema ao executar solicitação. Favor procurar a Equipe de Desenvolvimento.");
-
         }
     }
 
     [HttpGet("{empresa:int}/{cod_material:int}", Name = "ObterMaterial")]
     public ActionResult<Material> Get(int empresa, int cod_material)
     {
-
         try
         {
             var material = _context.Materiais.FirstOrDefault(m => m.COD_EMPRESA == empresa && m.COD_MAT == cod_material);
@@ -52,13 +46,11 @@ public class MateriaisController : ControllerBase
         {
             return StatusCode(500, "Problema ao executar solicitação. Favor procurar a Equipe de Desenvolvimento.");
         }
-
     }
 
     [HttpPost]
     public ActionResult Post(Material material)
     {
-
         try
         {
             if (material is null) return BadRequest();
@@ -75,13 +67,11 @@ public class MateriaisController : ControllerBase
         {
             return StatusCode(500, "Problema ao executar solicitação. Favor procurar a Equipe de Desenvolvimento.");
         }
-
     }
 
     [HttpPut("{empresa:int}/{cod_material:int}")]
     public ActionResult Put(int empresa, int cod_material, Material material)
     {
-
         try
         {
             if (material is null || empresa != material.COD_EMPRESA || cod_material != material.COD_MAT)
@@ -96,13 +86,11 @@ public class MateriaisController : ControllerBase
         {
             return StatusCode(500, "Problema ao executar solicitação. Favor procurar a Equipe de Desenvolvimento.");
         }
-
     }
 
     [HttpDelete("{empresa:int}/{cod_material:int}")]
     public ActionResult Delete(int empresa, int cod_material)
     {
-
         try
         {
             var material = _context.Materiais.FirstOrDefault(m => m.COD_EMPRESA == empresa && m.COD_MAT == cod_material);
@@ -117,7 +105,5 @@ public class MateriaisController : ControllerBase
         {
             return StatusCode(500, "Problema ao executar solicitação. Favor procurar a Equipe de Desenvolvimento.");
         }
-
     }
-
 }
