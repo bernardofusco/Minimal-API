@@ -7,13 +7,14 @@ namespace SuprimentosApi.Models;
 [Table("MATERIAL")]
 public class Material
 {
-    public int COD_EMPRESA { get; set; }
-    [Key]
-    public int COD_MAT { get; set; }
-    public string? DESCRICAO { get; set; }
-    public decimal? PRECO_UNIT { get; set; }
-    [ForeignKey("Categoria")]
-    public int COD_TIP_MAT { get; set; }
-    [JsonIgnore]
-    public Categoria Categoria { get; set; }
+	[Key]
+	public int COD_EMPRESA { get; set; }
+	[Key]
+	public int COD_MAT { get; set; }
+	public string? DESCRICAO { get; set; }
+	public decimal? PRECO_UNIT { get; set; }
+	[ForeignKey("Categoria")]
+	public int COD_TIP_MAT { get; set; }
+	[JsonIgnore]
+	public Categoria Categoria { get; set; }
 }

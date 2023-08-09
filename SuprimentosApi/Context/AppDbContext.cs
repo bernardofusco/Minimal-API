@@ -6,11 +6,11 @@ namespace SuprimentosApi.Context;
 
 public class AppDbContext : DbContext
 {
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
-    { }
+	public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+	{ }
 
-    public DbSet<Categoria>? Categorias { get; set; }
-    public DbSet<Material>? Materiais { get; set; }
-
+	public DbSet<Categoria>? Categorias { get; set; }
+	public DbSet<Material>? Materiais { get; set; }
+	public DbSet<Empresa>? Empresas { get; }
 }
 
